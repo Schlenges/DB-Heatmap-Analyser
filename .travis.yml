@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - "11"
+
+services:
+  - docker
+addons:
+  apt:
+    packages:
+      - pandoc
+      - bash
+
+sudo: true
+
+before_install: 
+  - gem install asciidoctor
+
+provider: script
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+script: 
+  - npm install
+  - echo $DOCKER_PASS | docker login -u "$DOCKER_USER" --password-stdin
+  - bash builddocker_and_tag.sh

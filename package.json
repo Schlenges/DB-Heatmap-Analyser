@@ -1,0 +1,53 @@
+{
+  "name": "download-heatmap-analyse",
+  "version": "1.1.8",
+  "description": "Download Files von Minio und diff dieser Files",
+  "main": "lib/index.js",
+  "scripts": {
+    "start_run": "node lib/index.js",
+    "build": "npm run src_format && npm run src_lint && babel src -d lib",
+    "src_lint": "eslint src tests",
+    "src_format": "prettier --no-semi --single-quote --trailing-comma es5 --write \"{src,tests}/**/*.js\"",
+    "test_only": "jest",
+    "test": "npm run build && jest -c jest.config.json",
+    "debug": "npm run build && node --inspect-brk ./node_modules/.bin/jest -i --config=./jest.config.json",
+    "prepare": "npm run build && npm run doc",
+    "doc_readme_docbook": "asciidoctor -b docbook doc/readme.adoc",
+    "doc_readme_markdown": "iconv -t utf-8 doc/readme.xml | pandoc -f docbook -t gfm --wrap=none | iconv -f utf-8 > doc/README.md",
+    "doc": "npm run doc_readme_docbook && npm run doc_readme_markdown"
+  },
+  "devDependencies": {
+    "assert": "1.4.1",
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.3",
+    "babel-eslint": "9.0.0",
+    "babel-jest": "23.4.2",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-flow": "6.23.0",
+    "babel-register": "6.26.0",
+    "cz-conventional-changelog": "2.1.0",
+    "eslint": "5.5.0",
+    "eslint-config-prettier": "3.0.1",
+    "eslint-plugin-babel": "5.2.0",
+    "eslint-plugin-mocha": "5.2.0",
+    "jest": "23.5.0",
+    "jest-cli": "^23.6.0",
+    "jest-environment-node-debug": "2.0.0",
+    "jsonfile": "5.0.0",
+    "prettier": "1.14.2",
+    "regenerator-runtime": "0.12.1",
+    "rimraf": "2.6.2"
+  },
+  "dependencies": {
+    "archiver": "^3.0.0",
+    "deep-diff": "^1.0.2",
+    "extract-zip": "^1.6.7",
+    "is-docker": "^1.1.0",
+    "merge": "^1.2.1",
+    "minio": "^7.0.1",
+    "moment": "2.22.2"
+  }
+}

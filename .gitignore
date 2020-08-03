@@ -1,0 +1,14 @@
+lib
+node_modules
+coverage
+jsdoc
+npm-debug.log
+result
+readme.xml
+tests
+yarn-error.log
+yarn.lock
+package-lock.json
+.DS_Store
+.env
+config/client.json
