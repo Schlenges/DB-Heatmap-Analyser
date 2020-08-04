@@ -1,5 +1,5 @@
 # Project Heatmap
-A project developed for Deutsche Bahn, a German railway company, to download, compare and show the differences between heatmap files.
+A project developed for Deutsche Bahn, a German railway company, to download, compare, and show the differences between heatmap files.
   
 ## Installation Prerequisits:
 * Docker
